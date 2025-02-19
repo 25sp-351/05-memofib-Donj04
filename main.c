@@ -6,17 +6,19 @@
 #include <string.h>
 
 #include "cache.h"
-#include "collatz.h"
+#include "fibonacci.h"
 
 /*
 ** This is a cache tester for NON-RECURSIVE functions.
 ** It does not support the provider function accessing the cache.
 */
 
-#define TEST_COUNT 1000
-#define MAX_TEST_NUMBER 500
+#define TEST_COUNT 50
+#define MAX_TEST_NUMBER 20
 
 int rand_between(int min, int max);
+
+const char *get_num_suffix(int num);
 
 int main(int argc, char *argv[]) {
     if (argc > 2) {
@@ -25,10 +27,10 @@ int main(int argc, char *argv[]) {
     }
 
     // base (real) function
-    ProviderFunction get_me_a_value = steps_for_number;
+    ProviderFunction get_me_a_value = calculate_fibonacci;
 
     bool cache_installed            = argc > 1;
-    Cache *cache = NULL;
+    Cache *cache                    = NULL;
 
     if (cache_installed) {
         cache = load_cache_module(argv[1]);
@@ -47,12 +49,12 @@ int main(int argc, char *argv[]) {
 
         printf("\n\nBeginning test %2d: %d\n", test_number, randomnumber);
 
-        int steps = get_me_a_value(randomnumber);
+        int fib_num = get_me_a_value(randomnumber);
 
-        printf("Done with test %2d: %d took %d steps\n", test_number,
-               randomnumber, steps);
+        printf("Done with test %2d: %d%s Fibonacci number is %d\n", test_number,
+               randomnumber, get_num_suffix(randomnumber), fib_num);
 
-        if (test_number == TEST_COUNT / 2) {
+        if (cache != NULL && test_number == TEST_COUNT / 2) {
             printf("Taking a break. Resetting cache statistics.\n");
             cache->reset_statistics();
         }
@@ -77,4 +79,23 @@ int main(int argc, char *argv[]) {
 int rand_between(int min, int max) {
     int range = max - min;
     return min + arc4random_uniform(range);
+}
+
+const char *get_num_suffix(int num) {
+    int ones = num % 10;
+    int tens = num % 100;
+
+    if (tens >= 11 && tens <= 13)
+        return "th";
+
+    switch (ones) {
+        case 1:
+            return "st";
+        case 2:
+            return "nd";
+        case 3:
+            return "rd";
+        default:
+            return "th";
+    }
 }
