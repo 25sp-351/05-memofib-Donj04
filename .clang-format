@@ -6,7 +6,7 @@ UseTab: Never
 ColumnLimit: 80
 ReflowComments: true
 AlignOperands: true
-InsertBraces: false
+# InsertBraces: false
 RemoveBracesLLVM: true
 BreakStringLiterals: true
 KeepEmptyLinesAtTheStartOfBlocks: true
@@ -15,5 +15,5 @@ AllowShortFunctionsOnASingleLine: false
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortLoopsOnASingleLine: false
 AlignConsecutiveAssignments: AcrossEmptyLines
-InsertNewlineAtEOF: true
-AlignEscapedNewlines: LeftWithLastLine
+# InsertNewlineAtEOF: true
+# AlignEscapedNewlines: LeftWithLastLine

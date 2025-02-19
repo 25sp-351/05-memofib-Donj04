@@ -1,3 +1,5 @@
+#include <bsd/stdio.h>
+#include <bsd/stdlib.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
