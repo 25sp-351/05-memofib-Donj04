@@ -13,8 +13,8 @@
 ** It does not support the provider function accessing the cache.
 */
 
-#define TEST_COUNT 50
-#define MAX_TEST_NUMBER 20
+#define TEST_COUNT 1000
+#define MAX_TEST_NUMBER 90
 
 int rand_between(int min, int max);
 
@@ -49,9 +49,9 @@ int main(int argc, char *argv[]) {
 
         printf("\n\nBeginning test %2d: %d\n", test_number, randomnumber);
 
-        int fib_num = get_me_a_value(randomnumber);
+        unsigned long long fib_num = get_me_a_value(randomnumber);
 
-        printf("Done with test %2d: %d%s Fibonacci number is %d\n", test_number,
+        printf("Done with test %2d: %d%s Fibonacci number is %llu\n", test_number,
                randomnumber, get_num_suffix(randomnumber), fib_num);
 
         if (cache != NULL && test_number == TEST_COUNT / 2) {

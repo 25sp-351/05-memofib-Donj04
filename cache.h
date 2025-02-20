@@ -13,8 +13,8 @@
 typedef int KeyType;
 #define KEY_FMT "%d"
 
-typedef int ValueType;
-#define VALUE_FMT "%d"
+typedef unsigned long long ValueType;
+#define VALUE_FMT "%llu"
 
 
 

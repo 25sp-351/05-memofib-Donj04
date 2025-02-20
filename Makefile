@@ -1,6 +1,6 @@
 
 OBJS = main.o fibonacci.o cache.o
-LIBS = libbozo_cache.so librex_cache.so libmemoize.so liblast_recently_used.so libpassthrough.so
+LIBS = libmemoize.so
 
 all: main $(LIBS)
 
