@@ -6,7 +6,7 @@
 
 /* Simple memoizer */
 
-#define MAX_KEY 1000
+#define MAX_KEY 93
 #define CACHE_SIZE MAX_KEY + 1
 ValueType cache[CACHE_SIZE];
 
